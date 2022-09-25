@@ -1,21 +1,21 @@
 <?php
 # FileZilla.xml 読み込みファイ名変更　プログラム
-# 
+# このファイルは、ルート直下に配置してください。
 
 $file_list = array();
 
 #ローカルPCのパス
-$localpath ="../";
+$localpath ="/media/kumazaki/ubuntu-yobi/ココナラFTP/ココナラREPLUSバックアップ";
 #xmlから取り出したファイル名
 
 #XMLファイル指定
-$filename = "FileZilla.xml";
+$filename = "./file/FileZilla.xml";
 
 #変更前ファイル名保存
-$wfilename ="list.txt";
+$wfilename ="./file/list.txt";
 
 #変更後ファイル名保存
-$rwfilename ="Relist.txt";
+$rwfilename ="./file/Relist.txt";
 
 // XMLデータをオブジェクトに変換
 $xml_obj = simplexml_load_file($filename);
@@ -52,7 +52,7 @@ while($file_list <> $file_end ){
     $file_list = $file_list_one["LocalFile"];
     $file_name = $file_list_one["RemoteFile"];
 
-    $file_path ="/" . ($substr4 = mb_substr($file_list, $paht_strl));
+    $file_path = "./" . ($substr4 = mb_substr($file_list, $paht_strl));
     print_r( $file_path);
     print "\n";
     //ファイル出力
@@ -88,8 +88,18 @@ while($file_list <> $file_end ){
     fclose ($fp);
 
     //ファイル名変更
+    
     $chk_rename = rename( $file_path , $rfile_name);
 
+    if (!$chk_rename){
+        print "rename エラー";
+        exit;
+    }
+    
+
+    
+
+    
     //Key加算
     $key ++;
 
