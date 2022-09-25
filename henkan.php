@@ -5,7 +5,7 @@
 $file_list = array();
 
 #ローカルPCのパス
-$localpath ="/media/kumazaki/ubuntu-yobi/ココナラFTP/ココナラREPLUSバックアップ";
+$localpath ="./";
 #xmlから取り出したファイル名
 
 #XMLファイル指定
